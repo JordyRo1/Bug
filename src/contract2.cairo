@@ -32,6 +32,7 @@ mod Contract2 {
     #[abi(embed_v0)]
     impl IContract2Impl of IContract2<ContractState> {
         fn set_contract1_value(self: @ContractState, value: u256) {
+            // We are calling a ref self function, from a @self function, is that possible ?
             let contract1 = self.contract1.read(); 
             let dispatcher = IContract1Dispatcher{contract_address: contract1};
             dispatcher.set_value(value); 

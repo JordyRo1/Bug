@@ -37,7 +37,7 @@ fn test1(){
     res = contract2.get_contract1_value();
     assert(res ==  new_value, 'Wrong second value');
 
-    // Try to set contract 1 value through contract 2 using the dispatcher, does not work
+    // Try to set contract 1 value through contract 2 using the dispatcher, works
     let final_value: u256 = 998877; 
     contract2.set_contract1_dispatcher_value(final_value); 
     res = contract2.get_contract1_dispatcher_value();
