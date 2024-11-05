@@ -31,10 +31,15 @@ fn test1(){
     res = contract1.get_value();
     assert(res== value, 'Wrong first value');
 
+    // Try to set contract 1 value through contract 2 without using the stored dispatcher, works too
     let new_value: u256 = 11111; 
-    //Set it through contract 2 does not display an error, but does not update the value
     contract2.set_contract1_value(new_value); 
     res = contract2.get_contract1_value();
     assert(res ==  new_value, 'Wrong second value');
 
+    // Try to set contract 1 value through contract 2 using the dispatcher, does not work
+    let final_value: u256 = 998877; 
+    contract2.set_contract1_dispatcher_value(final_value); 
+    res = contract2.get_contract1_dispatcher_value();
+    assert(res ==  final_value, 'Wrong third value');
 }
